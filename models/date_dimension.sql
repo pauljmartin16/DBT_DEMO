@@ -27,14 +27,9 @@ WITH CTE AS (
 
     {{function1('STARTED_AT')}}
         
-    -- from
-    -- {{ source('demo', 'bike') }}
-    -- where STARTED_AT != 'started_at'
-
     from
-    {{ ref('stg_bike') }}
-    where STARTED_AT != 'started_at' and STARTED_AT != '"started_at"'
-
+    {{ source('demo', 'bike') }}
+    where STARTED_AT != 'started_at'
 )
 
 select
